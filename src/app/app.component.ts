@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { Question } from './Questions/question.model';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'MEAN-Project';
+  storedQuestions: Question[];
+  onQuestionCreated(Qn) {
+    this.storedQuestions.push(Qn);
+  }
 }
