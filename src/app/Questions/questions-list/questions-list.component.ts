@@ -6,6 +6,5 @@ import { Question } from '../question.model';
   styleUrls: ['./questions-list.component.css']
 })
 export class QuestionsListComponent {
-  Question = 'Sample Question';
   @Input() Questions: Question[] = [];
 }

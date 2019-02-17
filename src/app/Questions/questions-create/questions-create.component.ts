@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Question } from '../question.model';
+import { Statement } from '@angular/compiler';
 
 @Component({
   selector: 'app-questions-create',
@@ -8,14 +9,14 @@ import { Question } from '../question.model';
 })
 export class QuestionsCreateComponent {
   statement = '';
-  Option = ['Option1', 'Option2', 'Option3', 'Option4'];
+  Options = [];
   CorrectOption = '';
   @Output() questionCreated = new EventEmitter<Question>();
   onCreateQuestion() {
     const q: Question = {
       statement: this.statement,
-      Options: this.Option,
-      Correct: this.Option.indexOf(this.CorrectOption)
+      Options: this.Options,
+      Correct: this.Options[this.CorrectOption]
     };
     this.questionCreated.emit(q);
   }

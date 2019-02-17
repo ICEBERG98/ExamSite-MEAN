@@ -6,29 +6,35 @@
     <div class="form-supercontainer">
       <div class="form-container">
         <mat-form-field>
-          <input matInput [(ngModel)]="Option[0]" placeholder="Option 1" name="Option-0" />
+          <input matInput [(ngModel)]="Options[0]" placeholder="Option 1" name="Option-0" />
         </mat-form-field>
-        <mat-radio-button [(ngModel)]="CorrectOption" value=0 ngModelOptions="{standalone: true}">Correct</mat-radio-button>
       </div>
       <div class="form-container">
         <mat-form-field>
-          <input matInput [(ngModel)]="Option[1]" placeholder="Option 2" name="Option-1"/>
+          <input matInput [(ngModel)]="Options[1]" placeholder="Option 2" name="Option-1"/>
         </mat-form-field>
-        <mat-radio-button [(ngModel)]="CorrectOption" value=1 [ngModelOptions]="{standalone: true}">Correct</mat-radio-button>
       </div>
       <div class="form-container">
         <mat-form-field>
-          <input matInput [(ngModel)]="Option[2]" placeholder="Option 3" name="Option-2"/>
+          <input matInput [(ngModel)]="Options[2]" placeholder="Option 3" name="Option-2"/>
         </mat-form-field>
-        <mat-radio-button [(ngModel)]="CorrectOption" value=2 name="opt-2" [ngModelOptions]="{standalone: true}">Correct</mat-radio-button>
       </div>
       <div class="form-container">
         <mat-form-field>
-          <input matInput [(ngModel)]="Option[3]" placeholder="Option 4" name="Option-3" />
+          <input matInput [(ngModel)]="Options[3]" placeholder="Option 4" name="Option-3" />
         </mat-form-field>
-        <mat-radio-button [(ngModel)]="CorrectOption" value=3 name="opt-3">Correct</mat-radio-button>
+      </div>
+      <div class="form-container">
+          <mat-form-field>
+            <mat-select [(value)]="CorrectOption">
+              <mat-option value=0>{{Options[0]}}</mat-option>
+              <mat-option value=1>{{Options[1]}}</mat-option>
+              <mat-option value=2>{{Options[2]}}</mat-option>
+              <mat-option value=3>{{Options[3]}}</mat-option>
+            </mat-select>
+          </mat-form-field>
       </div>
     </div>
-    <button color=primary mat-stroked-button>Submit</button>
+    <button (click)="onCreateQuestion()" color=primary mat-stroked-button>Submit</button>
   </form>
 </mat-card>

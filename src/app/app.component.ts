@@ -7,8 +7,8 @@ import { Question } from './Questions/question.model';
 })
 export class AppComponent {
   title = 'MEAN-Project';
-  storedQuestions: Question[];
-  onQuestionCreated(Qn) {
+  storedQuestions: Question[] = [];
+  onQuestionCreated(Qn: Question) {
     this.storedQuestions.push(Qn);
   }
 }
