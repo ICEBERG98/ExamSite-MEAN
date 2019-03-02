@@ -1,0 +1,5 @@
+<div class="container">
+    <app-questions-create (questionCreated)="onQuestionCreated($event)"></app-questions-create>
+    <app-questions-list [Questions]="test"></app-questions-list>
+    <button (click)="onCreateTest()" color="primary" mat-stroked-button>Test Complete</button>
+  </div>

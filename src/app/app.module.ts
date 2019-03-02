@@ -18,12 +18,21 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { QuestionsListComponent } from './Questions/questions-list/questions-list.component';
 import { FormsModule } from '@angular/forms';
 import { QuestionsCreateComponent } from './Questions/questions-create/questions-create.component';
+import { StudentComponentComponent } from './student-component/student-component.component';
+import { TeacherComponentComponent } from './teacher-component/teacher-component.component';
+import { TestComponent } from './Tests/test/test.component';
+import { LoginComponent } from './login/login.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     QuestionsListComponent,
-    QuestionsCreateComponent
+    QuestionsCreateComponent,
+    StudentComponentComponent,
+    TeacherComponentComponent,
+    TestComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +46,8 @@ import { QuestionsCreateComponent } from './Questions/questions-create/questions
     MatCheckboxModule,
     MatRadioModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

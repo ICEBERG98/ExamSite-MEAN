@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Question } from '../question.model';
-import { Statement } from '@angular/compiler';
 
 @Component({
   selector: 'app-questions-create',
@@ -13,6 +12,11 @@ export class QuestionsCreateComponent {
   CorrectOption = '';
   @Output() questionCreated = new EventEmitter<Question>();
   onCreateQuestion() {
+    /*
+    *
+    * This function Emits Out a question to its parent each time a new question is added
+    * by the user.
+    */
     const q: Question = {
       statement: this.statement,
       Options: this.Options,
