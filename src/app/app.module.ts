@@ -23,6 +23,8 @@ import { TeacherComponentComponent } from './teacher-component/teacher-component
 import { TestComponent } from './Tests/test/test.component';
 import { LoginComponent } from './login/login.component';
 import { AppRoutingModule } from './app-routing.module';
+import { RouterModule } from '@angular/router';
+import { HeaderBarComponent } from './header-bar/header-bar.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { AppRoutingModule } from './app-routing.module';
     StudentComponentComponent,
     TeacherComponentComponent,
     TestComponent,
-    LoginComponent
+    LoginComponent,
+    HeaderBarComponent
   ],
   imports: [
     BrowserModule,

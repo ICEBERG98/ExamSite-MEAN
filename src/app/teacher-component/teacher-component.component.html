@@ -1,5 +1,10 @@
 <div class="container">
-    <app-questions-create (questionCreated)="onQuestionCreated($event)"></app-questions-create>
-    <app-questions-list [Questions]="test"></app-questions-list>
-    <button (click)="onCreateTest()" color="primary" mat-stroked-button>Test Complete</button>
+    <form>
+      <mat-form-field>
+        <input matInput placeholder="Test Name" name="Test Name">
+      </mat-form-field>
+    </form>
+    <app-questions-create></app-questions-create>
+    <app-questions-list></app-questions-list>
+    <button (click)="onCreateTest()" color="primary" mat-stroked-button [routerLink]="['/teacher']" routerLinkActive="router-link-active" >Test Complete</button>
   </div>

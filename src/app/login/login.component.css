@@ -2,6 +2,8 @@
   width: 40%;
   margin: auto;
   overflow: hidden;
+  margin-top: 1rem;
+  color: primary;
 }
 button{
   float: right;
@@ -24,4 +26,10 @@ mat-radio-button{
   height: 10px;
   width: 80%;
 }
-
+.form-supercontainer,
+.form-container,
+mat-form-field,
+input{
+  display: block;
+  width: 100%;
+}

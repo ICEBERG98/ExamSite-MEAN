@@ -1,1 +1,4 @@
-<app-questions-list [Questions]="this.test.Questions"></app-questions-list>
+<app-questions-list *ngIf='this.validator() == false' (Questions)='this.testServ.latestTest'></app-questions-list>
+<mat-card *ngIf='this.validator() == true'>
+  studentComponent No content
+</mat-card>

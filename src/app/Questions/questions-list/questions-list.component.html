@@ -1,3 +1,4 @@
+<div *ngIf='Questions.length > 0'>
 <mat-card *ngFor='let Question of Questions'>
 <mat-accordion>
   <p>{{ Question.statement }}</p>
@@ -9,3 +10,9 @@
   </mat-radio-group>
 </mat-accordion>
 </mat-card>
+</div>
+<div *ngIf="Questions.length===0">
+  <mat-card>
+    questionsListComponent No content yet!
+  </mat-card>
+</div>

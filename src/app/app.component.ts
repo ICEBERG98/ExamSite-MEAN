@@ -8,12 +8,4 @@ import { Test } from './Tests/test.model';
 })
 export class AppComponent {
   title = 'MEAN-Project';
-  currTest: Test = {
-    Questions: []
-  };
-  onTestCreated(t: Test) {
-    this.currTest.Questions = t.Questions;
-    console.log(t);
-    console.log(this.currTest);
-  }
 }

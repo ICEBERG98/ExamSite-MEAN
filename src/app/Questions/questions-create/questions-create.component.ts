@@ -1,16 +1,16 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Question } from '../question.model';
-
+import { QuestionServiceService } from 'src/app/services/question-service/question-service.service';
 @Component({
   selector: 'app-questions-create',
   templateUrl: './questions-create.component.html',
   styleUrls: ['./questions-create.component.css'],
 })
 export class QuestionsCreateComponent {
+  constructor(private questServ: QuestionServiceService ) {}
   statement = '';
   Options = [];
   CorrectOption = '';
-  @Output() questionCreated = new EventEmitter<Question>();
   onCreateQuestion() {
     /*
     *
@@ -22,6 +22,6 @@ export class QuestionsCreateComponent {
       Options: this.Options,
       Correct: this.Options[this.CorrectOption]
     };
-    this.questionCreated.emit(q);
+    this.questServ.putQuestion(q);
   }
 }

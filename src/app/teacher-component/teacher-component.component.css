@@ -4,3 +4,8 @@
   margin-top: 1rem;
   color: primary
 }
+mat-form-field,
+input{
+  display: block;
+  width: 100%;
+}

@@ -1,6 +1,6 @@
 mat-card{
   margin: auto;
-  overflow: hidden;
+  overflow: auto;
 }
 mat-form-field,
 textarea{
