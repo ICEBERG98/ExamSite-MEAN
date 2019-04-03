@@ -25,6 +25,7 @@ import { LoginComponent } from './login/login.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { HeaderBarComponent } from './header-bar/header-bar.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { HeaderBarComponent } from './header-bar/header-bar.component';
     TeacherComponentComponent,
     TestComponent,
     LoginComponent,
-    HeaderBarComponent
+    HeaderBarComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

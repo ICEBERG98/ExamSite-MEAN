@@ -6,6 +6,7 @@
   color: primary;
 }
 button{
+  margin: 1rem;
   float: right;
 }
 .form-supercontainer{

@@ -4,11 +4,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { StudentComponentComponent } from './student-component/student-component.component';
 import { TeacherComponentComponent } from './teacher-component/teacher-component.component';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   { path: 'student', component: StudentComponentComponent },
   { path: 'teacher', component: TeacherComponentComponent },
-  { path: 'login', component: LoginComponent}
+  { path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent}
 ];
 
 @NgModule({
