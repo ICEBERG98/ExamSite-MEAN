@@ -3,41 +3,41 @@
     <mat-card-title>Register</mat-card-title>
     <mat-card-content>
     <div class="form-supercontainer">
-    <form>
+    <form #regform="ngForm" (ngSubmit)="onSubmit(regform)" >
       <div class="form-container">
       <mat-form-field>
-        <input matInput type="text" placeholder="First Name" name="fname">
+        <input matInput type="text" placeholder="First Name" name="fname" ngModel required>
       </mat-form-field>
       </div>
       <div class="form-container">
         <mat-form-field>
-          <input matInput type="text" placeholder="Last Name" name="lname">
+          <input matInput type="text" placeholder="Last Name" name="lname" ngModel required>
         </mat-form-field>
         </div>
       <div class="form-container">
         <mat-form-field>
-          <input matInput type="email" placeholder="E-mail" name="email">
+          <input matInput type="email" placeholder="E-mail" name="email" ngModel required>
         </mat-form-field>
       </div>
       <div class="form-container">
       <mat-form-field>
-        <input matInput type="password" placeholder="Password" name="pass">
+        <input matInput type="password" placeholder="Password" name="pass" ngModel required>
       </mat-form-field>
       </div>
       <div class="form-container">
         <mat-form-field>
-          <input matInput type="password" placeholder="Confirm Password" name="cpass">
+          <input matInput type="password" placeholder="Confirm Password" name="cpass" ngModel required>
         </mat-form-field>
       </div>
       <div class="form-container">
-      <mat-radio-group>
-        <mat-radio-button value='Teacher'>Teacher</mat-radio-button>
+      <mat-radio-group name="user_type" ngModel required>
+        <mat-radio-button value='Teacher' >Teacher</mat-radio-button>
         <mat-radio-button value='Student'>Student</mat-radio-button>
       </mat-radio-group>
       </div>
+      <button type="submit" color=primary mat-stroked-button>Register</button>
     </form>
     </div>
-    <button color=primary mat-stroked-button>Register</button>
     </mat-card-content>
   </mat-card>
   </div>
