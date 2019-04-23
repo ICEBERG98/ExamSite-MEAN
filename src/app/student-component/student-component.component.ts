@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class StudentComponentComponent {
   test: Test;
-
+  
   @ViewChild('child') child: StudentQuestionsComponent;
   @ViewChild('testid') testid: ElementRef;
   dynamicdata : string = "";

@@ -35,6 +35,17 @@ export class TestServiceService {
   return this.test_tmp;
   }
 
+  getTestByName(name: string) : Test {
+    if(name == ""){
+      return this.test_tmp;
+    }
+    this.http.get(this.url + "testsn/" + name).subscribe((res)=>{
+      this.test_tmp.Questions = res[0]['questions'];
+   //   console.log(res[0]);
+  })
+  return this.test_tmp;
+  }
+
   putTest(testname : String) {
     this.updateTest();
     let test_json = {

@@ -1,18 +1,19 @@
 <div class='container'>
     <mat-card>
-      <mat-card-title>Enter Test ID</mat-card-title>
       <mat-card-content>
       <div class="form-supercontainer">
       <form>
         <div class="form-container">
         <mat-form-field>
-          <input #testid matInput type="text" placeholder="Test ID" name="id" ngModel required>
+          <input #testid matInput type="text" placeholder="Test Name" name="id" ngModel required>
         </mat-form-field>
-        </div>
         <button (click)="updateID()" type="submit" color=primary mat-stroked-button>Submit</button>
+        </div>
       </form>
       </div>
       </mat-card-content>
     </mat-card>
     </div>
+<div class='container'>
 <app-student-questions #child [dynamicdata]="dynamicdata"></app-student-questions>
+</div>
