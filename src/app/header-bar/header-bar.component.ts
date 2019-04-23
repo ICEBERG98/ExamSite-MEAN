@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { routerNgProbeToken } from '@angular/router/src/router_module';
 
 @Component({
   selector: 'app-header-bar',
@@ -7,7 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderBarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
+
+  loggedin(){
+    if(localStorage.getItem("status") == "1"){
+      return 1;
+    }
+    return 0;
+  }
+
+  logout(){
+    localStorage.setItem("status", "0");
+    this.router.navigateByUrl("/login");
+  }
 
   ngOnInit() {
   }
