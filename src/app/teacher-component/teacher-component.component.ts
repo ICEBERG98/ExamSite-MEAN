@@ -4,6 +4,7 @@ import { Test } from '../Tests/test.model';
 import { TestServiceService } from '../services/test-service/test-service.service';
 import { OutputType } from '@angular/core/src/view';
 import { QuestionServiceService } from '../services/question-service/question-service.service';
+import { OnInit, ViewChild, ElementRef } from '@angular/core';
 @Component({
   selector: 'app-teacher-component',
   templateUrl: './teacher-component.component.html',
@@ -14,6 +15,7 @@ export class TeacherComponentComponent {
   test: Question[] = [];
   test2: Question[] = [];
   finalTest: Test;
+  @ViewChild('nameInput') nameInput: ElementRef;
   /*
   * This function adds a question to the current local test whenever a new question is created by the teacher
   */
@@ -23,8 +25,8 @@ export class TeacherComponentComponent {
   /*
   * This function is a wrapper to the putTest functionality provided by the TestService service
   */
- uploadTest() {
-  this.testServ.putTest();
+ uploadTest(testname : String) {
+  this.testServ.putTest(testname);
   }
   /*
   * This function sends the new test to the test service whenever teacher creates a new test
@@ -35,6 +37,7 @@ export class TeacherComponentComponent {
     const t: Test = {
       Questions: this.test2
     };
-    this.uploadTest();
+    let testname = this.nameInput.nativeElement.value;
+    this.uploadTest(testname);
   }
 }

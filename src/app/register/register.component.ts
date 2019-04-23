@@ -20,8 +20,8 @@ export class RegisterComponent implements OnInit {
     let options = {
       headers: httpHeaders
     };    
-    console.log(data);
-    return this.http.post("http://192.168.0.102:1337/register", data, options).subscribe();
+     console.log(data);
+    return this.http.post("http://localhost:1337/register", data, options).subscribe();
   }
 
   onSubmit(form) {

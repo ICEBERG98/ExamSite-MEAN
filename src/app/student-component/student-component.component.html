@@ -1,4 +1,18 @@
-<app-questions-list *ngIf='this.validator() == false' (Questions)='this.testServ.latestTest'></app-questions-list>
-<mat-card *ngIf='this.validator() == true'>
-  studentComponent No content
-</mat-card>
+<div class='container'>
+    <mat-card>
+      <mat-card-title>Enter Test ID</mat-card-title>
+      <mat-card-content>
+      <div class="form-supercontainer">
+      <form>
+        <div class="form-container">
+        <mat-form-field>
+          <input #testid matInput type="text" placeholder="Test ID" name="id" ngModel required>
+        </mat-form-field>
+        </div>
+        <button (click)="updateID()" type="submit" color=primary mat-stroked-button>Submit</button>
+      </form>
+      </div>
+      </mat-card-content>
+    </mat-card>
+    </div>
+<app-student-questions #child [dynamicdata]="dynamicdata"></app-student-questions>
