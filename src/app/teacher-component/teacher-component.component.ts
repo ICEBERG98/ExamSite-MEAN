@@ -5,13 +5,15 @@ import { TestServiceService } from '../services/test-service/test-service.servic
 import { OutputType } from '@angular/core/src/view';
 import { QuestionServiceService } from '../services/question-service/question-service.service';
 import { OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-teacher-component',
   templateUrl: './teacher-component.component.html',
   styleUrls: ['./teacher-component.component.css']
 })
 export class TeacherComponentComponent {
-  constructor(private testServ: TestServiceService, private questServ: QuestionServiceService) {}
+  constructor(private testServ: TestServiceService, private questServ: QuestionServiceService, private router: Router) {}
   test: Question[] = [];
   test2: Question[] = [];
   finalTest: Test;
@@ -40,4 +42,18 @@ export class TeacherComponentComponent {
     let testname = this.nameInput.nativeElement.value;
     this.uploadTest(testname);
   }
+
+  isTeacher(){
+    if(localStorage.getItem("user_type") == "teacher"){
+      return 1;
+    }
+    return 0;
+  }
+
+  ngOnInit(){
+    if(this.isTeacher() == 0){
+      this.router.navigateByUrl("/login");
+    }
+  }
+
 }

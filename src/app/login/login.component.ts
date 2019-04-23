@@ -27,6 +27,8 @@ export class LoginComponent implements OnInit {
       if(res['status'] == "Logged In"){
    //     console.log(res['redirect']);
         localStorage.setItem('status', "1");
+        localStorage.setItem('user_type', data["user_type"]);
+       // console.log(localStorage.getItem("user_type"));
         this.router.navigateByUrl('/' + res['redirect']);
       }
       else{

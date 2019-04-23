@@ -20,6 +20,7 @@ export class HeaderBarComponent implements OnInit {
 
   logout(){
     localStorage.setItem("status", "0");
+    localStorage.setItem("user_type", "0");
     this.router.navigateByUrl("/login");
   }
 
