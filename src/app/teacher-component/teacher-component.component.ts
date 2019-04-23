@@ -27,7 +27,7 @@ export class TeacherComponentComponent {
   /*
   * This function is a wrapper to the putTest functionality provided by the TestService service
   */
- uploadTest(testname : String) {
+  uploadTest(testname : String) {
   this.testServ.putTest(testname);
   }
   /*
@@ -55,5 +55,4 @@ export class TeacherComponentComponent {
       this.router.navigateByUrl("/login");
     }
   }
-
 }

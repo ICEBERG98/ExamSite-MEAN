@@ -12,6 +12,9 @@ export class LoginComponent implements OnInit {
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
+    if(localStorage.getItem("status") == "1"){
+      this.router.navigateByUrl("/" + localStorage.getItem("user_type"));
+    }
   }
 
   login(data){

@@ -7,5 +7,5 @@ import { Test } from './Tests/test.model';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'MEAN-Project';
+  title = 'MCQ Platform';
 }
