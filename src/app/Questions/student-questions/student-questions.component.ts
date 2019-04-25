@@ -14,6 +14,7 @@ export class StudentQuestionsComponent implements OnInit {
   test_tmp: Test = {
     Questions: []
   };
+
   constructor(private testServ: TestServiceService) { 
     this.Questions = [];
   }
@@ -60,7 +61,7 @@ export class StudentQuestionsComponent implements OnInit {
     this.test_tmp = this.testServ.getTestByName(id);
   //  this.Questions = this.test_tmp["Questions"];
     this.Questions = this.test_tmp.Questions;
-   // console.log(this.test_tmp["Questions"]);
-    //console.log(this.test_tmp);
+    console.log(this.Questions);
+    console.log(this.test_tmp);
   }
 }
