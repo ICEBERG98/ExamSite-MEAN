@@ -10,7 +10,8 @@ import {
   MatCheckboxModule,
   MatRadioModule,
   MatInputModule,
-  MatSelectModule
+  MatSelectModule,
+  MatSnackBarModule,
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -27,6 +28,7 @@ import { RouterModule } from '@angular/router';
 import { HeaderBarComponent } from './header-bar/header-bar.component';
 import { RegisterComponent } from './register/register.component';
 import { HttpClientModule } from '@angular/common/http';
+
 import { StudentQuestionsComponent } from './Questions/student-questions/student-questions.component';
 
 @NgModule({
@@ -57,6 +59,7 @@ import { StudentQuestionsComponent } from './Questions/student-questions/student
     MatSelectModule,
     AppRoutingModule,
     HttpClientModule,
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

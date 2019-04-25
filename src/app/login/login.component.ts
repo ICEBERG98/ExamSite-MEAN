@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     if(localStorage.getItem("status") == "1"){
@@ -24,18 +25,16 @@ export class LoginComponent implements OnInit {
     let options = {
       headers: httpHeaders
     };    
-   // console.log(data);
     return this.http.post("http://localhost:1337/login", data, options).subscribe((res)=> {
- //     console.log(res["status"]);
       if(res['status'] == "Logged In"){
-   //     console.log(res['redirect']);
         localStorage.setItem('status', "1");
         localStorage.setItem('user_type', data["user_type"]);
-       // console.log(localStorage.getItem("user_type"));
         this.router.navigateByUrl('/' + res['redirect']);
       }
       else{
-        alert("Invalid Credentials");
+        this.snackBar.open("Invalid Credentials", "Ok", {
+          duration: 2000,
+        });
       }
   });
   }

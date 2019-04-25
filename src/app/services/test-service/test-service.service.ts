@@ -25,25 +25,12 @@ export class TestServiceService {
     return this.latestTest ;
   }
 
-  getTestById(id: string) : Test {
-    if(id == ""){
-      return this.test_tmp;
-    }
-    this.http.get(this.url + "tests/" + id).subscribe((res)=>{
-      this.test_tmp.Questions = res['questions'];
-  })
-  return this.test_tmp;
+  getTestById(id: string) {
+    return this.http.get(this.url + "tests/" + id);
   }
 
-  getTestByName(name: string) : Test {
-    if(name == ""){
-      return this.test_tmp;
-    }
-    this.http.get(this.url + "testsn/" + name).subscribe((res)=>{
-      this.test_tmp.Questions = res[0]['questions'];
-   //   console.log(res[0]);
-  })
-  return this.test_tmp;
+  getTestByName(name: string){
+    return this.http.get(this.url + "testsn/" + name);
   }
 
   putTest(testname : String) {
