@@ -2,7 +2,7 @@
   <mat-card *ngFor='let Question of Questions; let i = index'>
     <mat-accordion>
       <p>{{ Question.statement }}</p>
-      <mat-radio-group id="{{'ques' + i}}" >
+      <mat-radio-group id="{{'ques' + i}}">
         <mat-radio-button id="{{'ques' + i + '0'}}" value="1">{{ Question.Options[0] }}</mat-radio-button>
         <mat-radio-button id="{{'ques' + i + '1'}}" value="2">{{ Question.Options[1] }}</mat-radio-button>
         <mat-radio-button id="{{'ques' + i + '2'}}" value="3">{{ Question.Options[2] }}</mat-radio-button>
@@ -11,6 +11,6 @@
     </mat-accordion>
   </mat-card>
   <div *ngIf='Questions.length > 0'>
-      <button (click) = "submitTest()" color=primary mat-stroked-button>Submit Test</button>
+    <button (click)="submitTest()" color=primary mat-stroked-button>Submit Test</button>
   </div>
-  </div>
+</div>

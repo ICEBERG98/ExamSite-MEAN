@@ -1,28 +1,28 @@
 <div class='container'>
-<mat-card>
-  <mat-card-title>Login</mat-card-title>
-  <mat-card-content>
-  <div class="form-supercontainer">
-  <form #logform="ngForm" (ngSubmit)="onClick(logform)">
-    <div class="form-container">
-    <mat-form-field>
-      <input matInput type="text" placeholder="Email" name="email" ngModel required>
-    </mat-form-field>
-    </div>
-    <div class="form-container">
-    <mat-form-field>
-      <input matInput type="password" placeholder="Password" name="pass" ngModel required>
-    </mat-form-field>
-    </div>
-    <div class="form-container">
-    <mat-radio-group name="user_type" ngModel required>
-      <mat-radio-button value='teacher'>Teacher</mat-radio-button>
-      <mat-radio-button value='student'>Student</mat-radio-button>
-    </mat-radio-group>
-    </div>
-    <button type="submit" color=primary mat-stroked-button>Login</button>
-  </form>
-  </div>
-  </mat-card-content>
-</mat-card>
+  <mat-card>
+    <mat-card-title>Login</mat-card-title>
+    <mat-card-content>
+      <div class="form-supercontainer">
+        <form #logform="ngForm" (ngSubmit)="onClick(logform)">
+          <div class="form-container">
+            <mat-form-field>
+              <input matInput type="text" placeholder="Email" name="email" ngModel required>
+            </mat-form-field>
+          </div>
+          <div class="form-container">
+            <mat-form-field>
+              <input matInput type="password" placeholder="Password" name="pass" ngModel required>
+            </mat-form-field>
+          </div>
+          <div class="form-container">
+            <mat-radio-group name="user_type" ngModel required>
+              <mat-radio-button value='teacher'>Teacher</mat-radio-button>
+              <mat-radio-button value='student'>Student</mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <button type="submit" color=primary mat-stroked-button>Login</button>
+        </form>
+      </div>
+    </mat-card-content>
+  </mat-card>
 </div>
