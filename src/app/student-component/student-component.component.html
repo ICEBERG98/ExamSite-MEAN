@@ -1,5 +1,5 @@
 <div class='container'>
-  <mat-card>
+  <mat-card *ngIf="hide">
     <mat-card-content>
       <div class="form-supercontainer">
         <form>
@@ -15,5 +15,5 @@
   </mat-card>
 </div>
 <div class='container'>
-  <app-student-questions #child [dynamicdata]="dynamicdata"></app-student-questions>
+    <app-student-questions #child [dynamicdata]="dynamicdata"></app-student-questions>
 </div>

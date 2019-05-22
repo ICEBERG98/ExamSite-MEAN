@@ -11,7 +11,7 @@ import { Test } from '../../Tests/test.model';
 export class StudentQuestionsComponent implements OnInit {
   Questions: Question[] = [];
   @Input() dynamicdata: string = "";
-  @ViewChildren("radio") rad: QueryList<any>
+  @ViewChildren("radio") rad: QueryList<any>;
   test_tmp: Test = {
     Questions: []
   };
@@ -33,7 +33,7 @@ export class StudentQuestionsComponent implements OnInit {
   }
 
   listen(id : string) {
-    this.testServ.getTestByName(id).subscribe(res =>{
+    this.testServ.getTestByName(id).subscribe(res => {
       this.Questions = res[0]["questions"];
     });
     console.log(this.Questions);

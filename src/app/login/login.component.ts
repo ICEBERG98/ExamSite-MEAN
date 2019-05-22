@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import {MatSnackBar} from '@angular/material';
+import * as sha512 from 'js-sha512';
 
 @Component({
   selector: 'app-login',
@@ -21,10 +22,10 @@ export class LoginComponent implements OnInit {
   login(data){
     let httpHeaders = new HttpHeaders({
       'Content-Type' : 'application/json'
-    }); 
+    });
     let options = {
       headers: httpHeaders
-    };    
+    };
     return this.http.post("http://localhost:1337/login", data, options).subscribe((res)=> {
       if(res['status'] == "Logged In"){
         localStorage.setItem('status', "1");
@@ -39,8 +40,20 @@ export class LoginComponent implements OnInit {
   });
   }
 
-  onClick(form) {
-    this.login(form.value);
+  redirectReg(){
+    this.router.navigateByUrl("/register");
   }
 
+  onClick(form) {
+    let email = form.value["email"];
+    let pass = sha512.sha512(form.value["pass"]);
+    let user_type = form.value["user_type"]
+    let data = {
+      "email" : email,
+      "pass" : pass,
+      "user_type" : user_type
+    }
+    console.log(pass)
+    this.login(data);
+  }
 }

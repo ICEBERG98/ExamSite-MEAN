@@ -16,6 +16,8 @@ export class StudentComponentComponent {
   @ViewChild('child') child: StudentQuestionsComponent;
   @ViewChild('testid') testid: ElementRef;
   dynamicdata : string = "";
+  public hide = true;
+
   constructor(public testServ: TestServiceService, public questServ: QuestionServiceService, private router: Router) {
   }
   
@@ -35,5 +37,6 @@ export class StudentComponentComponent {
   updateID(){
     this.dynamicdata = this.testid.nativeElement.value;
     this.child.listen(this.dynamicdata);
+    this.hide = false;
   }
 }
