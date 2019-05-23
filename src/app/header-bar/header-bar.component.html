@@ -4,7 +4,13 @@
   </span>
   <!-- This fills the remaining space of the current row -->
   <span class="example-fill-remaining-space"></span>
-  <div *ngIf='loggedin() === 1'>
+  <div *ngIf='is_student() === 1'>
+      <button (click)="logout()" mat-stroked-button>Log Out</button>
+      <button (click)="home()" mat-stroked-button>Home</button>
+    </div>
+  <div *ngIf='is_teacher() === 1'>
     <button (click)="logout()" mat-stroked-button>Log Out</button>
+    <button (click)="mytests()" mat-stroked-button>My Tests</button>
+    <button (click)="home()" mat-stroked-button>Home</button>
   </div>
 </mat-toolbar>

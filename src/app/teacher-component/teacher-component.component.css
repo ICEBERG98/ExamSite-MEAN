@@ -13,3 +13,6 @@ button{
   background-color: white;
   float: right;
 }
+.mat-card{
+  margin:0.5rem;
+}

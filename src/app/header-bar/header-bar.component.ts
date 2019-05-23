@@ -11,6 +11,27 @@ export class HeaderBarComponent implements OnInit {
 
   constructor(private router: Router, private http: HttpClient) { }
 
+  // Can use the local storage here since these functions are only used for display manipulation
+  // and database is not manipulated on basis of these
+
+  home(){
+    this.router.navigateByUrl("/" + localStorage.getItem("user_type"));
+  }
+
+  is_teacher(){
+    if(this.loggedin() && localStorage.getItem("user_type") == "teacher"){
+      return 1;
+    }
+    return 0;
+  }
+
+  is_student(){
+    if(this.loggedin() && localStorage.getItem("user_type") == "student"){
+      return 1;
+    }
+    return 0;
+  }
+
   loggedin(){
     if(localStorage.getItem("status") == "1"){
       return 1;
@@ -33,6 +54,10 @@ export class HeaderBarComponent implements OnInit {
       localStorage.setItem("user_type", "0");
       this.router.navigateByUrl("/login");
     });
+  }
+
+  mytests(){
+    this.router.navigateByUrl("/mytests");
   }
 
   ngOnInit() {

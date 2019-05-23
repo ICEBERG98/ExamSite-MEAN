@@ -1,0 +1,17 @@
+<div class="container" *ngIf="test_names.length > 0">
+    <mat-card *ngFor='let names of test_names;let i = index'>
+      <mat-card-content>
+        <p>Test : {{names}}</p>
+        <button (click)="edit(i)" color=primary mat-stroked-button>Edit</button>
+        <button (click)="delete(i)" color=primary mat-stroked-button>Delete</button>
+        <button (click)="results(i)" color=primary mat-stroked-button>Results</button>
+      </mat-card-content>
+    </mat-card>
+</div>
+<div class = "container" *ngIf="test_names.length === 0">
+    <mat-card>
+      <mat-card-content>
+        <h3> You have not created any tests! </h3>
+      </mat-card-content>
+    </mat-card>  
+</div>
