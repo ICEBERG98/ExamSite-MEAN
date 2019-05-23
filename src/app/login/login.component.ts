@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
     };
     return this.http.post("http://localhost:1337/login", data, options).subscribe((res)=> {
       if(res['status'] == "Logged In"){
+        sessionStorage.setItem("token", res["token"]);
         localStorage.setItem('status', "1");
         localStorage.setItem('user_type', data["user_type"]);
         this.router.navigateByUrl('/' + res['redirect']);

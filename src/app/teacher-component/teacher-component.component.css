@@ -9,3 +9,7 @@ input{
   display: block;
   width: 100%;
 }
+button{
+  background-color: white;
+  float: right;
+}

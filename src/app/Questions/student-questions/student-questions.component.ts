@@ -2,6 +2,8 @@ import { Component, OnInit, Input, ViewChildren, QueryList  } from '@angular/cor
 import { Question } from '../question.model';
 import { TestServiceService } from '../../services/test-service/test-service.service';
 import { Test } from '../../Tests/test.model';
+import { Output, EventEmitter } from '@angular/core'; 
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-student-questions',
@@ -10,12 +12,14 @@ import { Test } from '../../Tests/test.model';
 })
 export class StudentQuestionsComponent implements OnInit {
   Questions: Question[] = [];
+  @Output() scevent = new EventEmitter<string>();
   @Input() dynamicdata: string = "";
   @ViewChildren("radio") rad: QueryList<any>;
+  scorestr:string;
   test_tmp: Test = {
     Questions: []
   };
-  constructor(private testServ: TestServiceService) { 
+  constructor(private testServ: TestServiceService, private http: HttpClient) { 
     this.Questions = [];
   }
 
@@ -29,7 +33,8 @@ export class StudentQuestionsComponent implements OnInit {
         score += 1;
       }
     });
-    alert("Your Score is " + score);
+    this.scorestr = score.toString();
+    this.scevent.next();
   }
 
   listen(id : string) {

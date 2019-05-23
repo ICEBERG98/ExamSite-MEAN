@@ -6,6 +6,8 @@ import { OutputType } from '@angular/core/src/view';
 import { QuestionServiceService } from '../services/question-service/question-service.service';
 import { OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-teacher-component',
@@ -13,7 +15,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./teacher-component.component.css']
 })
 export class TeacherComponentComponent {
-  constructor(private testServ: TestServiceService, private questServ: QuestionServiceService, private router: Router) {}
+  constructor(private testServ: TestServiceService, private http: HttpClient, private questServ: QuestionServiceService, private router: Router) {}
   test: Question[] = [];
   test2: Question[] = [];
   finalTest: Test;
@@ -44,15 +46,24 @@ export class TeacherComponentComponent {
   }
 
   isTeacher(){
-    if(localStorage.getItem("user_type") == "teacher"){
-      return 1;
-    }
-    return 0;
+    let httpHeaders = new HttpHeaders({
+      'Content-Type' : 'application/json',
+      'token' : sessionStorage.getItem("token")
+    }); 
+    let options = {
+      headers: httpHeaders
+    };
+    return this.http.post("http://localhost:1337/check/teacher", {}, options).subscribe((res) => {
+        console.log(res);
+        if(res["status"] == "expired"){
+          sessionStorage.setItem("token", "0");
+          localStorage.setItem("status", "0");
+          this.router.navigateByUrl("/login");
+        }
+    });
   }
 
   ngOnInit(){
-    if(this.isTeacher() == 0){
-      this.router.navigateByUrl("/login");
-    }
+   this.isTeacher();
   }
 }

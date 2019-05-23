@@ -4,6 +4,7 @@ import { QuestionServiceService } from '../services/question-service/question-se
 import { TestServiceService } from '../services/test-service/test-service.service';
 import { StudentQuestionsComponent } from '../Questions/student-questions/student-questions.component';
 import { Router } from '@angular/router';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-student-component',
@@ -15,28 +16,54 @@ export class StudentComponentComponent {
   
   @ViewChild('child') child: StudentQuestionsComponent;
   @ViewChild('testid') testid: ElementRef;
+  public score = "";
   dynamicdata : string = "";
   public hide = true;
-
-  constructor(public testServ: TestServiceService, public questServ: QuestionServiceService, private router: Router) {
+  public showcomp = true;
+  name: string;
+  
+  constructor(private http: HttpClient, public testServ: TestServiceService, public questServ: QuestionServiceService, private router: Router) {
   }
   
   isStudent(){
-    if(localStorage.getItem("user_type") == "student"){
-      return 1;
-    }
-    return 0;
+    let httpHeaders = new HttpHeaders({
+      'Content-Type' : 'application/json',
+      'token' : sessionStorage.getItem("token")
+    }); 
+    let options = {
+      headers: httpHeaders
+    };
+    return this.http.post("http://localhost:1337/check/student", {}, options).subscribe((res) => {
+        console.log(res);
+        if(res["status"] == "expired"){
+          sessionStorage.setItem("token", "0");
+          localStorage.setItem("status", "0");
+          this.router.navigateByUrl("/login");
+        }
+    });
   }
 
   ngOnInit(){
-    if(this.isStudent() == 0){
-      this.router.navigateByUrl("/login");
-    }
+    this.isStudent();
+  }
+
+  showScore(){
+    console.log(this.child.scorestr);
+    this.score = "Your Score is " + this.child.scorestr;
+    this.showcomp = false;
+    let httpHeaders = new HttpHeaders({
+      'Content-Type' : 'application/json',
+      'token' : sessionStorage.getItem("token")
+    }); 
+    let options = {
+      headers: httpHeaders
+    };
+    return this.http.post("http://localhost:1337/submit", {"name" : this.name, "marks" : this.child.scorestr}, options).subscribe();
   }
 
   updateID(){
-    this.dynamicdata = this.testid.nativeElement.value;
-    this.child.listen(this.dynamicdata);
+    this.name = this.testid.nativeElement.value;
+    this.child.listen(this.name);
     this.hide = false;
   }
 }

@@ -1,3 +1,8 @@
+<div class='container' *ngIf="showcomp===false">
+<mat-card>
+  <mat-card-content><h3>{{score}}</h3></mat-card-content>
+</mat-card>
+</div>
 <div class='container'>
   <mat-card *ngIf="hide">
     <mat-card-content>
@@ -14,6 +19,6 @@
     </mat-card-content>
   </mat-card>
 </div>
-<div class='container'>
-    <app-student-questions #child [dynamicdata]="dynamicdata"></app-student-questions>
+<div *ngIf="showcomp" class='container'>
+    <app-student-questions #child [dynamicdata]="dynamicdata" (scevent)=showScore()></app-student-questions>
 </div>

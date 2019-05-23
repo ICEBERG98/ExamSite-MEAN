@@ -1,9 +1,11 @@
 <div class="container">
+  <mat-card>
   <form>
     <mat-form-field>
       <input #nameInput matInput placeholder="Test Name" name="Test Name">
     </mat-form-field>
   </form>
+  </mat-card>
   <app-questions-create></app-questions-create>
   <app-questions-list></app-questions-list>
   <button (click)="onCreateTest()" color="primary" mat-stroked-button [routerLink]="['/teacher']"
