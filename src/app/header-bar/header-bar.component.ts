@@ -10,7 +10,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class HeaderBarComponent implements OnInit {
 
   constructor(private router: Router, private http: HttpClient) { }
-
+  whoami:number = 1;
   // Can use the local storage here since these functions are only used for display manipulation
   // and database is not manipulated on basis of these
 
@@ -30,7 +30,7 @@ export class HeaderBarComponent implements OnInit {
       return 1;
     }
     return 0;
-  }
+}
 
   loggedin(){
     if(localStorage.getItem("status") == "1"){
@@ -62,5 +62,4 @@ export class HeaderBarComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }

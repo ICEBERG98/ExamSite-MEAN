@@ -53,9 +53,9 @@ export class TeacherComponentComponent {
     let options = {
       headers: httpHeaders
     };
-    return this.http.post("http://localhost:1337/check/teacher", {}, options).subscribe((res) => {
+    return this.http.post("http://localhost:1337/check/", {}, options).subscribe((res) => {
         console.log(res);
-        if(res["status"] == "expired"){
+        if(res["status"] == "expired" || res["user_type"] != "teacher"){
           sessionStorage.setItem("token", "0");
           localStorage.setItem("status", "0");
           this.router.navigateByUrl("/login");

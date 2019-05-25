@@ -39,7 +39,7 @@ export class StudentQuestionsComponent implements OnInit {
 
   listen(id : string) {
     this.testServ.getTestByName(id).subscribe(res => {
-      this.Questions = res[0]["questions"];
+      this.Questions = res as Question[];
     });
     console.log(this.Questions);
     console.log(this.test_tmp);

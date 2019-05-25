@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-teacher-tests-comp',
   templateUrl: './teacher-tests-comp.component.html',
@@ -19,7 +20,7 @@ export class TeacherTestsCompComponent implements OnInit {
   }
 
   results(str){
-    console.log("Results" + str);
+    this.router.navigateByUrl("/results/" + this.test_names[str]);
   }
 
   delete(str){

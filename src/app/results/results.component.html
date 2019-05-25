@@ -1,0 +1,15 @@
+<div class="container" style="width:25%"><mat-card style="height:1.5rem"><mat-card-title style = "text-align: center">TEST : {{test_name}}</mat-card-title></mat-card></div>
+<div class="container" *ngIf="results.length > 0">
+  <mat-card *ngFor='let res of results;let i = index'>
+    <mat-card-content>
+      <p>NAME : {{res.fullname}}<br>EMAIL : {{res.email}}<br>MARKS :  {{res.marks}}</p>
+    </mat-card-content>
+  </mat-card>
+</div>
+<div class = "container" *ngIf="results.length === 0">
+  <mat-card>
+    <mat-card-content>
+      <h3> No Results! </h3>
+    </mat-card-content>
+  </mat-card>  
+</div>

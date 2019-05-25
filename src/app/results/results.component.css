@@ -1,0 +1,17 @@
+.container {
+    width: 40%;
+    margin: auto;
+    margin-top: 1rem;
+    color: primary
+  }
+.mat-card{
+   margin: 1rem;
+   height: 2.5rem;
+}
+button{
+   float: left;
+   margin-left: 1rem
+}
+h4{
+   align-content: center;
+}

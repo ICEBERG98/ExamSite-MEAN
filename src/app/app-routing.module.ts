@@ -6,13 +6,15 @@ import { TeacherComponentComponent } from './teacher-component/teacher-component
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { TeacherTestsCompComponent } from './teacher-tests-comp/teacher-tests-comp.component';
+import { ResultsComponent } from './results/results.component';
 
 const routes: Routes = [
   { path: 'student', component: StudentComponentComponent },
   { path: 'teacher', component: TeacherComponentComponent },
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
-  { path : 'mytests', component: TeacherTestsCompComponent}
+  { path: 'mytests', component: TeacherTestsCompComponent},
+  { path: 'results/:name', component: ResultsComponent}
 ];
 
 @NgModule({

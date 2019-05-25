@@ -31,6 +31,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { StudentQuestionsComponent } from './Questions/student-questions/student-questions.component';
 import { TeacherTestsCompComponent } from './teacher-tests-comp/teacher-tests-comp.component';
+import { ResultsComponent } from './results/results.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { TeacherTestsCompComponent } from './teacher-tests-comp/teacher-tests-co
     HeaderBarComponent,
     RegisterComponent,
     StudentQuestionsComponent,
-    TeacherTestsCompComponent
+    TeacherTestsCompComponent,
+    ResultsComponent
   ],
   imports: [
     BrowserModule,

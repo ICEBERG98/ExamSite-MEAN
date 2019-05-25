@@ -1,13 +1,15 @@
 <div class="container">
-  <mat-card>
+  <div  class="container">
+  <mat-card style = "width:60%;margin:auto;margin-bottom: 0.2rem">
   <form>
     <mat-form-field>
       <input #nameInput matInput placeholder="Test Name" name="Test Name">
     </mat-form-field>
   </form>
   </mat-card>
+  </div>
   <app-questions-create></app-questions-create>
   <app-questions-list></app-questions-list>
-  <button (click)="onCreateTest()" color="primary" mat-stroked-button [routerLink]="['/teacher']"
+  <button style="margin-bottom: 1rem" (click)="onCreateTest()" color="primary" mat-stroked-button [routerLink]="['/teacher']"
     routerLinkActive="router-link-active">Test Complete</button>
 </div>

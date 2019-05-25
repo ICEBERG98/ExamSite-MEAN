@@ -14,9 +14,36 @@ export class LoginComponent implements OnInit {
   constructor(private http: HttpClient, private router: Router, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
-    if(localStorage.getItem("status") == "1"){
-      this.router.navigateByUrl("/" + localStorage.getItem("user_type"));
+    if(localStorage.getItem("status") == "0"){
+      return 0;
     }
+    let token = sessionStorage.getItem("token");
+    if(token == null){
+      sessionStorage.setItem("token", "0");
+      localStorage.setItem("status", "0");
+      localStorage.setItem("user_type", "0");
+      window.location.reload();
+      return 0;
+    }
+    let httpHeaders = new HttpHeaders({
+      'Content-Type' : 'application/json',
+      'token' : token
+    }); 
+    let options = {
+      headers: httpHeaders
+    };
+    return this.http.post("http://localhost:1337/check", {}, options).subscribe((res) => {
+        console.log(res);
+        if(res["status"] == "expired"){
+          sessionStorage.setItem("token", "0");
+          localStorage.setItem("status", "0");
+          localStorage.setItem("user_type", "0");
+          window.location.reload();
+        }
+        else{
+          this.router.navigateByUrl("/" + res["user_type"]);
+        }
+    });
   }
 
   login(data){
