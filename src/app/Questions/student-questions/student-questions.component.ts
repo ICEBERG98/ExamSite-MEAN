@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, ViewChildren, QueryList  } from '@angular/core';
-import { Question } from '../question.model';
+import { Question } from './ques.model';
+import { Res } from './ressub.model';
 import { TestServiceService } from '../../services/test-service/test-service.service';
 import { Test } from '../../Tests/test.model';
 import { Output, EventEmitter } from '@angular/core'; 
@@ -12,10 +13,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class StudentQuestionsComponent implements OnInit {
   Questions: Question[] = [];
+  Results : Res[] = [];
   @Output() scevent = new EventEmitter<string>();
   @Input() dynamicdata: string = "";
   @ViewChildren("radio") rad: QueryList<any>;
-  scorestr:string;
+  scorestr : string;
+  test_name : string;
   test_tmp: Test = {
     Questions: []
   };
@@ -27,17 +30,26 @@ export class StudentQuestionsComponent implements OnInit {
   }
 
   submitTest(){
-    var score = 0;
     this.rad.forEach((item, index) => {
-      if(this.Questions[index].Options[item.value] == this.Questions[index].Correct){
-        score += 1;
-      }
+      this.Results.push({"statement" : this.Questions[index].statement, "option" : item.value as string });
     });
-    this.scorestr = score.toString();
-    this.scevent.next();
+
+    let httpHeaders = new HttpHeaders({
+      'Content-Type' : 'application/json',
+      'token' : sessionStorage.getItem("token")
+    }); 
+    let options = {
+      headers: httpHeaders
+    };
+    // console.log( {"name" : this.test_name, "ques" : this.Results});
+    return this.http.post("http://localhost:1337/submit", {"name" : this.test_name, "ques" : this.Results}, options).subscribe(res => {
+      this.scorestr = res["marks"];
+      this.scevent.next();
+    });
   }
 
   listen(id : string) {
+    this.test_name = id;
     this.testServ.getTestByName(id).subscribe(res => {
       this.Questions = res as Question[];
     });

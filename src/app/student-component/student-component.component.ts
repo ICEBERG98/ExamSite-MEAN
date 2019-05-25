@@ -21,6 +21,7 @@ export class StudentComponentComponent {
   public hide = true;
   public showcomp = true;
   name: string;
+  public res = false;
   
   constructor(private http: HttpClient, public testServ: TestServiceService, public questServ: QuestionServiceService, private router: Router) {
   }
@@ -51,19 +52,13 @@ export class StudentComponentComponent {
     console.log(this.child.scorestr);
     this.score = "Your Score is " + this.child.scorestr;
     this.showcomp = false;
-    let httpHeaders = new HttpHeaders({
-      'Content-Type' : 'application/json',
-      'token' : sessionStorage.getItem("token")
-    }); 
-    let options = {
-      headers: httpHeaders
-    };
-    return this.http.post("http://localhost:1337/submit", {"name" : this.name, "marks" : this.child.scorestr}, options).subscribe();
+    this.res = false;
   }
 
   updateID(){
     this.name = this.testid.nativeElement.value;
     this.child.listen(this.name);
     this.hide = false;
+    this.res = true;
   }
 }
