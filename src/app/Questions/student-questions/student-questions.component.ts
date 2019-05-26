@@ -5,6 +5,7 @@ import { TestServiceService } from '../../services/test-service/test-service.ser
 import { Test } from '../../Tests/test.model';
 import { Output, EventEmitter } from '@angular/core'; 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-student-questions',
@@ -22,7 +23,7 @@ export class StudentQuestionsComponent implements OnInit {
   test_tmp: Test = {
     Questions: []
   };
-  constructor(private testServ: TestServiceService, private http: HttpClient) { 
+  constructor(private testServ: TestServiceService, private http: HttpClient, private snackBar: MatSnackBar) { 
     this.Questions = [];
   }
 
@@ -51,7 +52,15 @@ export class StudentQuestionsComponent implements OnInit {
   listen(id : string) {
     this.test_name = id;
     this.testServ.getTestByName(id).subscribe(res => {
-      this.Questions = res as Question[];
+      console.log(res);
+      if(res["status"] = "Failed!"){
+        this.snackBar.open("Invalid Test", "Ok", {
+          duration: 2000,
+        });
+      }
+      else{
+        this.Questions = res as Question[];
+      }
     });
     console.log(this.Questions);
     console.log(this.test_tmp);

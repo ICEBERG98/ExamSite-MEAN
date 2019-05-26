@@ -58,6 +58,9 @@ export class StudentComponentComponent {
   updateID(){
     this.name = this.testid.nativeElement.value;
     this.child.listen(this.name);
+    if(this.child.Questions.length == 0){
+      return 1;
+    }
     this.hide = false;
     this.res = true;
   }

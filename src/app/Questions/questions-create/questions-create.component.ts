@@ -29,6 +29,7 @@ export class QuestionsCreateComponent {
       Options: [this.option1.nativeElement.value, this.option2.nativeElement.value, this.option3.nativeElement.value, this.option4.nativeElement.value],
       Correct: this.correct.nativeElement.value 
     };
+    
     this.questServ.putQuestion(q);
   }
 }

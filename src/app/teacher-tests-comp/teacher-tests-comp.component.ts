@@ -16,7 +16,7 @@ export class TeacherTestsCompComponent implements OnInit {
   test_names = [];
 
   edit(str){
-    console.log("Edit" + str);
+    this.router.navigateByUrl("/edit/" + this.test_names[str]);
   }
 
   results(str){

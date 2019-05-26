@@ -1,0 +1,54 @@
+<div class="container" style="width:80%" >
+<mat-card>
+    <mat-card-title>Add a new Question</mat-card-title>
+    <form>
+      <mat-form-field  style="width:80%" >
+        <textarea #statement matInput placeholder="Question Statement" name="statement"></textarea>
+      </mat-form-field><br />
+      <div class="form-supercontainer">
+        <div class="form-container">
+          <mat-form-field>
+            <input #option1 matInput placeholder="Option 1" name="Option-0" />
+          </mat-form-field>
+        </div>
+        <div class="form-container">
+          <mat-form-field>
+            <input #option2 matInput placeholder="Option 2" name="Option-1" />
+          </mat-form-field>
+        </div>
+        <div class="form-container">
+          <mat-form-field>
+            <input #option3 matInput placeholder="Option 3" name="Option-2" />
+          </mat-form-field>
+        </div>
+        <div class="form-container">
+          <mat-form-field>
+            <input #option4 matInput placeholder="Option 4" name="Option-3" />
+          </mat-form-field>
+        </div>
+        <div class="form-container">
+          <mat-form-field>
+            <input #correct matInput placeholder="Correct Answer" name="Correct" />
+          </mat-form-field>
+        </div>
+      </div>
+      <button (click)="onCreateQuestion()" color=primary mat-stroked-button>Submit</button>
+    </form>
+  </mat-card>  
+</div>
+<div class="container" *ngIf='Questions.length > 0'>
+  <mat-card style="margin:0 auto; text-align: center; width:20%"><mat-card-title>TEST : {{test_name}}</mat-card-title></mat-card>
+  <mat-card *ngFor='let Question of Questions;let i = index'>
+    <mat-accordion>
+      <p>{{ Question.statement }}</p>
+      <mat-radio-group #radio="matRadioGroup" >
+        <mat-radio-button value="0">{{ Question.Options[0] }}</mat-radio-button><br>
+        <mat-radio-button value="1">{{ Question.Options[1] }}</mat-radio-button><br>
+        <mat-radio-button value="2">{{ Question.Options[2] }}</mat-radio-button><br>
+        <mat-radio-button value="3">{{ Question.Options[3] }}</mat-radio-button><br>
+        <p> Correct Option : {{Question.Correct}}</p>
+        <button (click) = "onDelete(i)" mat-stroked-button>Delete</button>
+      </mat-radio-group>
+    </mat-accordion>
+  </mat-card>
+</div>

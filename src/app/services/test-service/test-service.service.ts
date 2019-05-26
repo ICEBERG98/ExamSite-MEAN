@@ -18,13 +18,53 @@ export class TestServiceService {
     Questions: []
   };
   questions : [];
-  url : string = "http://localhost:1337/"
+  url : string = "http://localhost:1337/";
   updateTest() {
     this.latestTest.Questions = this.questServ.getAllQuestions();
   }
+
   getTest(): Test {
     this.updateTest();
     return this.latestTest ;
+  }
+
+  getTestTeacher(id: string) {
+    let httpHeaders = new HttpHeaders({
+      'Content-Type' : 'application/json',
+      'token' : sessionStorage.getItem("token")
+    }); 
+    let options = {
+      headers: httpHeaders
+    };
+    return this.http.get(this.url + "teststeacher/" + id, options);
+  }
+
+  addQuestion(test : string, ques : Question){
+    let httpHeaders = new HttpHeaders({
+      'Content-Type' : 'application/json',
+      'token' : sessionStorage.getItem("token")
+    }); 
+    let options = {
+      headers: httpHeaders
+    };
+    console.log(test + " " + ques);
+    return this.http.post(this.url + "tests/addquestion", {"name" : test, "question" : ques}, options).subscribe(res =>{
+      console.log(res);
+    });
+  }
+
+  deleteQuesFromTest(test : string, statement : string){
+    let httpHeaders = new HttpHeaders({
+      'Content-Type' : 'application/json',
+      'token' : sessionStorage.getItem("token")
+    }); 
+    let options = {
+      headers: httpHeaders
+    };
+    console.log(test + " " + statement);
+    return this.http.post(this.url + "tests/delques", {"name" : test, "statement" : statement}, options).subscribe(res =>{
+      console.log(res);
+    });
   }
 
   getTestById(id: string) {
