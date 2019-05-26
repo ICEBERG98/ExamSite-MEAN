@@ -1,6 +1,7 @@
 <div class='container' *ngIf="showcomp===false">
 <mat-card>
   <mat-card-title style="text-align: center">{{score}}</mat-card-title>
+  <button (click)="reloaddis()" color=primary mat-stroked-button>Done</button>
 </mat-card>
 </div>
 <div class='container'>
@@ -19,7 +20,7 @@
     </mat-card-content>
   </mat-card>
 </div>
-<div *ngIf="showcomp" class='container'>
+<div *ngIf="showcomp" class="cl">
     <mat-card *ngIf="res" style="margin:0 auto; text-align: center; width:20%"><mat-card-title>TEST : {{name}}</mat-card-title></mat-card>
-    <app-student-questions #child [dynamicdata]="dynamicdata" (scevent)=showScore()></app-student-questions>
+    <app-student-questions #child [dynamicdata]="dynamicdata" (scevent)=showScore() (hideevent)=hideeve()></app-student-questions>
 </div>

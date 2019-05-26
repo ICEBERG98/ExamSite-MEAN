@@ -16,10 +16,11 @@
     text-align: center;
   }
   button{
-    margin-top: 1rem;
+    margin-top: 0.5rem;
     margin-bottom: 5rem;
     margin-left: 2rem;
     float: center;
+    background-color: floralwhite
   }
   .form-supercontainer{
     display: flex;

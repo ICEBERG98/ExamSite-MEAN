@@ -16,6 +16,7 @@ export class StudentQuestionsComponent implements OnInit {
   Questions: Question[] = [];
   Results : Res[] = [];
   @Output() scevent = new EventEmitter<string>();
+  @Output() hideevent = new EventEmitter<string>();
   @Input() dynamicdata: string = "";
   @ViewChildren("radio") rad: QueryList<any>;
   scorestr : string;
@@ -53,16 +54,17 @@ export class StudentQuestionsComponent implements OnInit {
     this.test_name = id;
     this.testServ.getTestByName(id).subscribe(res => {
       console.log(res);
-      if(res["status"] = "Failed!"){
+      if(res["status"] == "Failed!"){
         this.snackBar.open("Invalid Test", "Ok", {
           duration: 2000,
         });
+        this.hideevent.next();
       }
       else{
         this.Questions = res as Question[];
       }
     });
-    console.log(this.Questions);
-    console.log(this.test_tmp);
+ //   console.log(this.Questions);
+ //   console.log(this.test_tmp);
   }
 }

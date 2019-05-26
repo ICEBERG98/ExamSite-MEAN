@@ -55,12 +55,18 @@ export class StudentComponentComponent {
     this.res = false;
   }
 
+  reloaddis(){
+    window.location.reload();
+  }
+
+  hideeve(){
+    this.hide = true;
+    this.res = false;
+  }
+
   updateID(){
     this.name = this.testid.nativeElement.value;
     this.child.listen(this.name);
-    if(this.child.Questions.length == 0){
-      return 1;
-    }
     this.hide = false;
     this.res = true;
   }
